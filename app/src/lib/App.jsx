@@ -10,6 +10,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/quiz/:id" element={<QuizPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>
