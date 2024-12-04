@@ -24,4 +24,4 @@ const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-const { loadUser, getUser, modifyScore } = userSlice.actions;
+export const { loadUser, getUser, modifyScore } = userSlice.actions;

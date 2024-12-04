@@ -18,4 +18,4 @@ const quizSlice = createSlice({
 
 export default quizSlice.reducer;
 
-const { loadQuizzes } = quizSlice.actions;
+export const { loadQuizzes } = quizSlice.actions;
