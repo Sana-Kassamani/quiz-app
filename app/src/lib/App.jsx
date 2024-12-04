@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./local_data_source/redux/store";
 import HomePage from "./pages/HomePage";
+import QuizPage from "./pages/QuizPage";
 
 function App() {
   return (
