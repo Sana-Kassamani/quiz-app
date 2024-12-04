@@ -12,3 +12,5 @@ const QuizCard = ({ id, title, description }) => {
     </div>
   );
 };
+
+export default QuizCard;
