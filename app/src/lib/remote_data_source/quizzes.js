@@ -1,5 +1,6 @@
 export const quizzes = [
   {
+    id: 1,
     title: "JavaScript Basics",
     questions: [
       {
@@ -21,6 +22,7 @@ export const quizzes = [
     ],
   },
   {
+    id: 2,
     title: "Python Fundamentals",
     questions: [
       {
@@ -43,6 +45,7 @@ export const quizzes = [
     ],
   },
   {
+    id: 3,
     title: "HTML and CSS Basics",
     questions: [
       {
@@ -64,6 +67,7 @@ export const quizzes = [
     ],
   },
   {
+    id: 4,
     title: "Data Structures",
     questions: [
       {
@@ -86,6 +90,7 @@ export const quizzes = [
     ],
   },
   {
+    id: 5,
     title: "SQL Basics",
     questions: [
       {
