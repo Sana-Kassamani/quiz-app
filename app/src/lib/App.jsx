@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./../ui/styles/App.css";
 import { Provider } from "react-redux";
 import store from "./local_data_source/redux/store";
 import HomePage from "./pages/HomePage";

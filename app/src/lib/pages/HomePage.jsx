@@ -1,7 +1,9 @@
+import Header from "../../ui/components/Header";
+import "./../../ui/styles/app.css";
 const HomePage = () => {
   return (
     <>
-      <h1>Hello world</h1>
+      <Header />
     </>
   );
 };
