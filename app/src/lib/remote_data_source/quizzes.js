@@ -9,7 +9,7 @@ export const quizzes = [
         options: ["var", "let", "const", "all of the above"],
         correctAnswer: "all of the above",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
       {
         content: "What method is used to parse a JSON string in JavaScript?",
@@ -17,7 +17,7 @@ export const quizzes = [
         options: [],
         correctAnswer: "JSON.parse",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
     ],
   },
@@ -31,7 +31,7 @@ export const quizzes = [
         options: ["function", "def", "define", "lambda"],
         correctAnswer: "def",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
       {
         content:
@@ -40,7 +40,7 @@ export const quizzes = [
         options: [],
         correctAnswer: "len",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
     ],
   },
@@ -54,7 +54,7 @@ export const quizzes = [
         options: ["<link>", "<a>", "<href>", "<url>"],
         correctAnswer: "<a>",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
       {
         content: "What CSS property is used to change the text color?",
@@ -62,7 +62,7 @@ export const quizzes = [
         options: [],
         correctAnswer: "color",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
     ],
   },
@@ -76,7 +76,7 @@ export const quizzes = [
         options: ["Queue", "Stack", "Array", "Linked List"],
         correctAnswer: "Stack",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
       {
         content:
@@ -85,7 +85,7 @@ export const quizzes = [
         options: [],
         correctAnswer: "O(1)",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
     ],
   },
@@ -99,7 +99,7 @@ export const quizzes = [
         options: ["SELECT", "INSERT", "UPDATE", "DELETE"],
         correctAnswer: "SELECT",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
       {
         content:
@@ -108,7 +108,7 @@ export const quizzes = [
         options: [],
         correctAnswer: "DISTINCT",
         userAnswer: "",
-        score: 0,
+        score: 5,
       },
     ],
   },
