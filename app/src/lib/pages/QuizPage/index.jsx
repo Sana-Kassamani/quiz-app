@@ -1,12 +1,14 @@
 import { useGetQuestion } from "../../../hooks/useGetQuestion";
+import { useHandleSubmit } from "../../../hooks/useHandleSubmit";
 import QuestionCard from "../../../ui/components/QuestionCard";
 import "../../../ui/styles/app.css";
+import { useState } from "react";
 
 const QuizPage = () => {
   const { title, questions } = useGetQuestion();
-  const handleSubmit = () => {
-    console.log(questions);
-  };
+  const [error, setError] = useState("");
+  const [answers, setAnswers] = useState(new Array(questions.length).fill(""));
+  const { handleSubmit } = useHandleSubmit({ setError, questions, answers });
   return (
     <>
       <div className="flex column gap pd-20">
@@ -15,10 +17,13 @@ const QuizPage = () => {
       </div>
       <div>
         {questions.map((q, index) => (
-          <QuestionCard index={index} key={index} />
+          <QuestionCard index={index} key={index} setAnswers={setAnswers} />
         ))}
       </div>
-      <button onClick={handleSubmit}>Submit</button>
+      <div>
+        {error && <p>{error}</p>}
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
     </>
   );
 };
