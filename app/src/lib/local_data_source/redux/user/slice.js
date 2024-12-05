@@ -11,17 +11,30 @@ const userSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     loadUser: (current, action) => {},
-    modifyScore: (current, { payload }) => {
-      //const newScore
+    finishQuiz: (current, { payload }) => {
+      const found = current.quizzes.find((q) => q.id === payload.id);
+      if (found) {
+        found.score = payload.score;
+      } else {
+        current.quizzes.push({
+          id: payload.id,
+          score: payload.score,
+        });
+      }
+    },
+    updateScore: (current, { payload }) => {
+      var score = 0;
+      current.quizzes.forEach((q) => {
+        score += q.score;
+      });
       return {
         ...current,
-        score: payload,
+        score: score,
       };
     },
-    getUser: (current, action) => {},
   },
 });
 
 export default userSlice.reducer;
 
-export const { loadUser, getUser, modifyScore } = userSlice.actions;
+export const { loadUser, updateScore, finishQuiz } = userSlice.actions;
