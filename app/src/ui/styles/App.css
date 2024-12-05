@@ -49,3 +49,7 @@
 .m-20 {
   margin: 20px 0px;
 }
+
+.full-height {
+  height: 100vh;
+}
