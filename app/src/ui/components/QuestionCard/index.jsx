@@ -1,32 +1,11 @@
 import { useGetQuestion } from "../../../hooks/useGetQuestion";
 import { questionType } from "../../../enums/questionType";
-import { useState } from "react";
-import { updateAnswer } from "../../../lib/local_data_source/redux/quizzes/slice";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHandleAnswer } from "../../../hooks/useHandleAnswer";
 
-const QuestionCard = ({ index }) => {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  const [selectedOption, setSelectedOption] = useState(null);
+const QuestionCard = ({ index, setAnswers }) => {
   const { questions } = useGetQuestion();
   const question = questions[index];
-  const handleOption = (e) => {
-    console.log(e.target.value, " was selected");
-    setSelectedOption(e.target.value);
-    dispatch(
-      updateAnswer({ quizId: id, questionIndex: index, answer: e.target.value })
-    );
-  };
-  const handleInput = (e) => {
-    const userAnswer = e.target.value.trim();
-    console.log(question.correctAnswer);
-    console.log(userAnswer);
-    console.log("the question is ", userAnswer === question.correctAnswer);
-    dispatch(
-      updateAnswer({ quizId: id, questionIndex: index, answer: userAnswer })
-    );
-  };
+  const { handleOption, handleInput } = useHandleAnswer({ index, setAnswers });
 
   return (
     <div>
@@ -40,17 +19,11 @@ const QuestionCard = ({ index }) => {
                 type="radio"
                 name={index}
                 value={o}
-                checked={selectedOption === o}
                 onChange={handleOption}
               />
               {o}
             </label>
           ))}
-
-          {/* checked={
-                selectedValue ===
-                "option3"
-            }                                  */}
         </div>
       )}
       {question.type === questionType.input && (
