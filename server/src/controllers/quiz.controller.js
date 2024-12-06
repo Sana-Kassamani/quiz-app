@@ -13,7 +13,7 @@ export const createQuiz = async (req, res) => {
   const { title } = req.body;
 
   try {
-    validateFields(title);
+    validateFields(res, title);
     const quiz = await Quiz.create({ title, questions: [] });
 
     return res.status(201).json({
@@ -37,7 +37,7 @@ export const addQuestion = async (req, res) => {
         message: "Quiz not found",
       });
     }
-    validateFields(content, type, correctAnswer, score);
+    validateFields(res, content, type, correctAnswer, score);
 
     if (type === "mcq") {
       validateFields(options);
