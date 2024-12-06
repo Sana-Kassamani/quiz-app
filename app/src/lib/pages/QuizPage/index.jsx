@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
-import { useGetQuestion } from "../../../hooks/useGetQuestion";
-import { useHandleSubmit } from "../../../hooks/useHandleSubmit";
+import { useGetQuestion } from "../../../utils/hooks/useGetQuestion";
+import { useHandleSubmit } from "../../../utils/hooks/useHandleSubmit";
 import QuestionCard from "../../../ui/components/QuestionCard";
 import "../../../ui/styles/app.css";
 import { useState } from "react";

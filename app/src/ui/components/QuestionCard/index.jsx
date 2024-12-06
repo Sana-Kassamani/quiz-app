@@ -1,6 +1,6 @@
-import { useGetQuestion } from "../../../hooks/useGetQuestion";
-import { questionType } from "../../../enums/questionType";
-import { useHandleAnswer } from "../../../hooks/useHandleAnswer";
+import { useGetQuestion } from "../../../utils/hooks/useGetQuestion";
+import { questionType } from "../../../utils/enums/questionType";
+import { useHandleAnswer } from "../../../utils/hooks/useHandleAnswer";
 import {
   FormControl,
   FormControlLabel,

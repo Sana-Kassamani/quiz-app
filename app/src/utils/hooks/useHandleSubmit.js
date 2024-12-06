@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import {
   finishQuiz,
   updateScore,
-} from "../lib/local_data_source/redux/user/slice";
+} from "../../lib/local_data_source/redux/user/slice";
 import { useDispatch } from "react-redux";
 
 export const useHandleSubmit = ({ setError, questions, answers }) => {

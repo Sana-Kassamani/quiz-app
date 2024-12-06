@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { updateAnswer } from "./../lib/local_data_source/redux/quizzes/slice.js";
+import { updateAnswer } from "../../lib/local_data_source/redux/quizzes/slice.js";
 
 export const useHandleAnswer = ({ index, setAnswers }) => {
   const { id } = useParams();
