@@ -1,3 +1,4 @@
+import { Box, Button, Typography } from "@mui/material";
 import { useGetQuestion } from "../../../hooks/useGetQuestion";
 import { useHandleSubmit } from "../../../hooks/useHandleSubmit";
 import QuestionCard from "../../../ui/components/QuestionCard";
@@ -11,18 +12,25 @@ const QuizPage = () => {
   const { handleSubmit } = useHandleSubmit({ setError, questions, answers });
   return (
     <>
-      <div className="flex column gap pd-20">
-        <h2>{title}</h2>
-        <h3>{questions.length} Questions</h3>
-      </div>
-      <div>
-        {questions.map((q, index) => (
-          <QuestionCard index={index} key={index} setAnswers={setAnswers} />
-        ))}
-      </div>
+      <Box component="section" sx={{ p: 2, m: 2 }}>
+        <Typography variant="h4"> {title}</Typography>
+        <Typography variant="h6">{questions.length} Questions</Typography>
+        {/* <h2>{title}</h2>
+        <h3>{questions.length} Questions</h3> */}
+      </Box>
+      {questions.map((q, index) => (
+        <QuestionCard index={index} key={index} setAnswers={setAnswers} />
+      ))}
       <div>
         {error && <p>{error}</p>}
-        <button onClick={handleSubmit}>Submit</button>
+        <Button
+          sx={{ marginTop: 2 }}
+          size="small"
+          variant="contained"
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
       </div>
     </>
   );

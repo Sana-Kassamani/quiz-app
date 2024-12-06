@@ -5,10 +5,11 @@ import HomePage from "./pages/HomePage";
 import QuizPage from "./pages/QuizPage";
 import QuizzesRoute from "../ui/components/QuizzesRoute";
 import ResultPage from "./pages/ResultPage";
+import { Container } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
+    <Container fixed>
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
@@ -20,7 +21,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </Provider>
-    </div>
+    </Container>
   );
 }
 

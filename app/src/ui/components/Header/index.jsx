@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -5,8 +6,8 @@ const Header = () => {
 
   return (
     <div className="flex space-between pd-20">
-      <h3>{user.name}</h3>
-      <h3>Score :{user.score}</h3>
+      <Typography variant="h4"> {user.name}</Typography>
+      <Typography variant="h4">Score: {user.score}</Typography>
     </div>
   );
 };
