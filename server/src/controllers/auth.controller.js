@@ -1,20 +1,16 @@
 import bcrypt from "bcrypt";
 import User from "../db/models/user.models.js";
 import jwt from "jsonwebtoken";
+import { validateFields } from "../utils/validation.js";
 
 export const register = async (req, res) => {
   const { username, name, password } = req.body;
 
   try {
-    if (!username || !name || !password) {
-      return res.status(400).json({
-        req: req.body,
-        message: "All fields are required",
-      });
-    }
+    validateFields(username, name, password);
     const pastUser = await User.findOne({ username });
     if (pastUser) {
-      return res.status(500).send({
+      return res.status(400).send({
         message: "Username already registered",
       });
     }
@@ -76,13 +72,3 @@ export const login = async (req, res) => {
   }
 };
 export const logout = () => {};
-
-const validateFields = (res, ...params) => {
-  params.forEach((p) => {
-    if (!p) {
-      return res.status(400).json({
-        message: "All fields are required",
-      });
-    }
-  });
-};
