@@ -24,3 +24,5 @@ const questionSchema = new Schema({
   },
 });
 export default questionSchema;
+
+export const Question = model("Question", questionSchema);
