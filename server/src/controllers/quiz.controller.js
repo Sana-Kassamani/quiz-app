@@ -1,4 +1,5 @@
 import Quiz from "../db/models/quiz.model.js";
+import { Question } from "../db/schemas/question.schema.js";
 import { validateFields } from "../utils/validation.js";
 
 export const getQuiz = async (req, res) => {
@@ -21,7 +22,49 @@ export const createQuiz = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Error adding user",
+      message: "Error creating quiz",
+    });
+  }
+};
+
+export const addQuestion = async (req, res) => {
+  const { content, type, options, correctAnswer, score, quizId } =
+    req.body.title;
+
+  try {
+    const quiz = await Quiz.findById(quizId);
+    if (!quiz) {
+      return res.status(404).send({
+        message: "Quiz not found",
+      });
+    }
+    validateFields(content, type, correctAnswer, score);
+
+    if (type === "mcq") {
+      validateFields(options);
+    } else {
+      options = [];
+    }
+
+    const question = new Question({
+      content,
+      type,
+      options,
+      correctAnswer,
+      score,
+    });
+
+    quiz.questions.push(question);
+    await quiz.save();
+
+    return res.status(201).json({
+      message: "Question added successfully",
+      quiz,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error adding question",
     });
   }
 };
