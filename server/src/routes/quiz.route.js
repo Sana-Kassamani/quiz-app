@@ -4,11 +4,18 @@ import {
   createQuiz,
   getQuiz,
 } from "../controllers/quiz.controller.js";
+import { authmiddleware } from "../middlewares/auth.middleware.js";
+import { AppRouter } from "../utils/AppRouter.js";
 
-const quizRouter = Router();
+const router = Router();
 
-quizRouter.get("/", getQuiz);
-quizRouter.post("/", createQuiz);
-quizRouter.put("/", addQuestion);
+router.get("/", getQuiz);
+router.post("/", createQuiz);
+router.put("/", addQuestion);
 
+const quizRouter = new AppRouter({
+  prefix: "/quiz",
+  middlewares: [authmiddleware],
+  router: router,
+});
 export default quizRouter;

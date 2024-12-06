@@ -1,9 +1,15 @@
 import { Router } from "express";
 import { login, register, logout } from "../controllers/auth.controller.js";
-const authRouter = Router();
+import { AppRouter } from "../utils/AppRouter.js";
+const router = Router();
 
-authRouter.post("/", login);
-authRouter.post("/register", register);
-authRouter.get("/logout", logout);
+router.post("/", login);
+router.post("/register", register);
+router.get("/logout", logout);
 
+const authRouter = new AppRouter({
+  prefix: "/auth",
+  middlewares: [],
+  router: router,
+});
 export default authRouter;
