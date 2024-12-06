@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes.js";
 
-app.use(express.json());
 const app = express();
+app.use(express.json());
 dotenv.config();
 // app.get("/", (req, res) => {
 //   res.json({
