@@ -1,4 +1,5 @@
 import { Schema, model, Types } from "mongoose";
+import Quiz from "./quiz.model.js";
 
 const userSchema = new Schema({
   username: {
@@ -20,9 +21,12 @@ const userSchema = new Schema({
     required: false,
     default: 0,
   },
-  //   quizzes: [{
-  //     ref:
-  //   }],
+  quizzes: [
+    {
+      type: Types.ObjectId,
+      ref: Quiz,
+    },
+  ],
 });
 
 const User = model("User", userSchema);
