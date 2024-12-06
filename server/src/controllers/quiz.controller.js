@@ -10,7 +10,7 @@ export const getQuiz = async (req, res) => {
 };
 
 export const createQuiz = async (req, res) => {
-  const { title } = req.body.title;
+  const { title } = req.body;
 
   try {
     validateFields(title);
@@ -28,11 +28,10 @@ export const createQuiz = async (req, res) => {
 };
 
 export const addQuestion = async (req, res) => {
-  const { content, type, options, correctAnswer, score, quizId } =
-    req.body.title;
-
+  const { content, type, correctAnswer, score, quizId } = req.body;
+  var { options } = req.body;
   try {
-    const quiz = await Quiz.findById(quizId);
+    var quiz = await Quiz.findById(quizId);
     if (!quiz) {
       return res.status(404).send({
         message: "Quiz not found",
