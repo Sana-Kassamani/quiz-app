@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import User from "../db/models/user.models";
-const authmiddleware = async (req, res, next) => {
+import User from "../db/models/user.models.js";
+export const authmiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   try {
     if (!authHeader) {
@@ -8,13 +8,10 @@ const authmiddleware = async (req, res, next) => {
     }
 
     const array = authHeader.split(" ");
-    if (array.length !== 2 || array[0] === "Bearer") {
+    if (array.length !== 2 || array[0] !== "Bearer") {
       throw Error();
     }
     const token = array[1];
-    if (!token) {
-      throw Error();
-    }
 
     const payload = await jwt.verify(token, process.env.JWT_SECRET);
 
