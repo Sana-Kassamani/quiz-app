@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userInitialState = {
-  name: "John Doe",
+  name: "",
   score: 0,
   quizzes: [],
 };
@@ -10,7 +10,13 @@ const userSlice = createSlice({
   name: "users",
   initialState: userInitialState,
   reducers: {
-    loadUser: (current, action) => {},
+    loadUser: (current, { payload }) => {
+      return {
+        ...current,
+        name: payload.name,
+        score: payload.score,
+      };
+    },
     finishQuiz: (current, { payload }) => {
       const found = current.quizzes.find((q) => q.id === payload.id);
       if (found) {

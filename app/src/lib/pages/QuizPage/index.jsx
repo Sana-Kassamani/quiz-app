@@ -27,7 +27,9 @@ const QuizPage = () => {
           sx={{ marginTop: 2 }}
           size="small"
           variant="contained"
-          onClick={handleSubmit}
+          onClick={async (e) => {
+            await handleSubmit(e);
+          }}
         >
           Submit
         </Button>
