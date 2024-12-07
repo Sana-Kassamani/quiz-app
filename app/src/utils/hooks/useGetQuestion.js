@@ -7,7 +7,7 @@ export const useGetQuestion = () => {
 
   try {
     if (quizzes) {
-      const { title, questions } = quizzes.find((q) => q.id === parseInt(id));
+      const { title, questions } = quizzes.find((q) => q._id === id);
       return { title, questions };
     } else {
       return null;

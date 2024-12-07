@@ -28,10 +28,19 @@ const QuestionCard = ({ index, setAnswers }) => {
       <br />
       {question.type === questionType.option && (
         <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
+          <FormLabel
+            id="demo-radio-buttons-group-label"
+            key={index}
+          ></FormLabel>
           <RadioGroup>
             {question.options.map((o) => (
-              <FormControlLabel value={o} control={<Radio />} label={o} />
+              <FormControlLabel
+                value={o}
+                control={<Radio />}
+                key={o}
+                label={o}
+                onChange={handleOption}
+              />
             ))}
           </RadioGroup>
         </FormControl>

@@ -14,7 +14,7 @@ const HomePage = () => {
         {quizzes.map((q, index) => (
           <QuizCard
             key={index}
-            id={q.id}
+            id={q._id}
             title={q.title}
             description={q.description}
           />

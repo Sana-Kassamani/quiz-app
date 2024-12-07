@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 const QuizCard = ({ id, title }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/quiz/${id}`);
+    navigate(`/home/quiz/${id}`);
   };
   return (
     <Card sx={{ minWidth: 200 }}>

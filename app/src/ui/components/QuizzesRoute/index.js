@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loadQuizzes } from "../../../lib/local_data_source/redux/quizzes/slice.js";
-import { getQuizzes } from "./services.js";
 import { request } from "../../../utils/request";
 
 const QuizzesRoute = () => {

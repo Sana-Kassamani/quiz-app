@@ -5,7 +5,7 @@ const ResultPage = () => {
   const navigate = useNavigate();
   const { score, fullScore, count, fullCount } = location.state || {};
   const handleClick = () => {
-    navigate("/");
+    navigate("/home");
   };
   return (
     <div className="flex column full-height justify-center align-center gap">
