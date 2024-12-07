@@ -6,6 +6,7 @@ import QuizPage from "./pages/QuizPage";
 import QuizzesRoute from "../ui/components/QuizzesRoute";
 import ResultPage from "./pages/ResultPage";
 import { Container } from "@mui/material";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<QuizzesRoute />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/quiz/:id" element={<QuizPage />} />
-              <Route path="/result" element={<ResultPage />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<QuizzesRoute />}>
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/home/quiz/:id" element={<QuizPage />} />
+              <Route path="/home/result" element={<ResultPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
