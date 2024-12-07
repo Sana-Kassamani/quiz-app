@@ -10,11 +10,11 @@ export const request = async ({ route, method = "GET", body }) => {
       data: body,
       headers: {
         "Content-Type": "application/json",
-        Authorization: localStorage.token,
+        Authorization: `Bearer ${localStorage.token}`,
       },
     });
 
-    return response.data;
+    return response;
   } catch (error) {
     console.log("======== Error =========");
     console.log(error);
