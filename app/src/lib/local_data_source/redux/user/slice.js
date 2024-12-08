@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUser } from "../../../remote_data_source/fetchUser";
+import { editScore } from "../../../remote_data_source/editScore";
 
 const userInitialState = {
   name: "",
@@ -14,24 +15,26 @@ const userSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     finishQuiz: (current, { payload }) => {
-      const found = current.quizzes.find((q) => q.id === payload.id);
-      if (found) {
-        found.score = payload.score;
-      } else {
-        current.quizzes.push({
-          id: payload.id,
-          score: payload.score,
-        });
+      const { id, quizScore } = payload;
+
+      const quizzes = current.quizzes.map((quiz) =>
+        quiz.id === id ? { ...quiz, score: quizScore } : quiz
+      );
+      const isQuizPresent = current.quizzes.some((quiz) => quiz.id === id);
+      if (!isQuizPresent) {
+        quizzes.push({ id, score: quizScore });
       }
-    },
-    updateScore: (current, { payload }) => {
-      var score = 0;
-      current.quizzes.forEach((q) => {
-        score += q.score;
-      });
+
       return {
         ...current,
-        score: score,
+        quizzes,
+      };
+    },
+    updateScore: (current, { payload }) => {
+      const totalScore = current.quizzes.reduce((acc, q) => acc + q.score, 0);
+      return {
+        ...current,
+        score: totalScore,
       };
     },
   },
@@ -45,6 +48,16 @@ const userSlice = createSlice({
       state.score = action.payload.score;
     });
     builder.addCase(fetchUser.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    });
+    builder.addCase(editScore.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(editScore.fulfilled, (state, action) => {
+      state.isLoading = false;
+    });
+    builder.addCase(editScore.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;
     });
