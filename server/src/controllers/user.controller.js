@@ -11,7 +11,7 @@ export const editScore = async (req, res) => {
   const user = req.user;
   try {
     validateFields(res, score, user);
-    user.score = score;
+    user.score += score;
     await user.save();
     return res.status(200).json({
       message: "Score updated successfully",
