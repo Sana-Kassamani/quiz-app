@@ -4,12 +4,17 @@ import "../../../ui/styles/app.css";
 import QuizCard from "../../../ui/components/QuizCard";
 
 const HomePage = () => {
-  const { quizzes } = useSelector((state) => state.quizzes);
+  const { quizzes, isLoading, error } = useSelector((state) => state.quizzes);
 
   console.log(quizzes);
   return (
     <>
       <Header />
+      {isLoading && (
+        <div>
+          <h4> Loading quizzes ...</h4>
+        </div>
+      )}
       <div className="flex justify-center gap">
         {quizzes.map((q, index) => (
           <QuizCard
@@ -20,6 +25,11 @@ const HomePage = () => {
           />
         ))}
       </div>
+      {error && (
+        <div>
+          <h4> Error Loading Quizzes: {error}</h4>
+        </div>
+      )}
     </>
   );
 };
