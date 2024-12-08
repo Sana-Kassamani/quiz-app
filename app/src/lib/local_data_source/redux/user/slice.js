@@ -14,24 +14,31 @@ const userSlice = createSlice({
   name: "users",
   initialState: userInitialState,
   reducers: {
-    finishQuiz: (current, { payload }) => {
-      const { id, quizScore } = payload;
+    // finishQuiz: (current, { payload }) => {
+    //   const { id, quizScore } = payload;
 
-      const quizzes = current.quizzes.map((quiz) =>
-        quiz.id === id ? { ...quiz, score: quizScore } : quiz
-      );
-      const isQuizPresent = current.quizzes.some((quiz) => quiz.id === id);
-      if (!isQuizPresent) {
-        quizzes.push({ id, score: quizScore });
-      }
+    //   const quizzes = current.quizzes.map((quiz) =>
+    //     quiz.id === id ? { ...quiz, score: quizScore } : quiz
+    //   );
+    //   const isQuizPresent = current.quizzes.some((quiz) => quiz.id === id);
+    //   if (!isQuizPresent) {
+    //     quizzes.push({ id, score: quizScore });
+    //   }
 
-      return {
-        ...current,
-        quizzes,
-      };
-    },
+    //   return {
+    //     ...current,
+    //     quizzes,
+    //   };
+    // },
+    // updateScore: (current, { payload }) => {
+    //   const totalScore = current.quizzes.reduce((acc, q) => acc + q.score, 0);
+    //   return {
+    //     ...current,
+    //     score: totalScore,
+    //   };
+    // },
     updateScore: (current, { payload }) => {
-      const totalScore = current.quizzes.reduce((acc, q) => acc + q.score, 0);
+      const totalScore = current.score + payload.score;
       return {
         ...current,
         score: totalScore,

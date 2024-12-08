@@ -1,8 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import {
-  finishQuiz,
-  updateScore,
-} from "../../lib/local_data_source/redux/user/slice";
+import { updateScore } from "../../lib/local_data_source/redux/user/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { editScore } from "../../lib/remote_data_source/editScore";
 
@@ -27,8 +24,8 @@ export const useHandleSubmit = ({ setError, questions, answers }) => {
         fullScore += questions[index].score;
       });
       console.log("score is ", quizScore);
-      dispatch(finishQuiz({ id, quizScore }));
-      dispatch(updateScore());
+      // dispatch(finishQuiz({ id, quizScore }));
+      dispatch(updateScore({ score: quizScore }));
       dispatch(editScore(quizScore));
       navigate("/home/result", {
         state: {
