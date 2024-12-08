@@ -15,8 +15,6 @@ const QuizPage = () => {
       <Box component="section" sx={{ p: 2, m: 2 }}>
         <Typography variant="h4"> {title}</Typography>
         <Typography variant="h6">{questions.length} Questions</Typography>
-        {/* <h2>{title}</h2>
-        <h3>{questions.length} Questions</h3> */}
       </Box>
       {questions.map((q, index) => (
         <QuestionCard index={index} key={index} setAnswers={setAnswers} />
@@ -27,9 +25,7 @@ const QuizPage = () => {
           sx={{ marginTop: 2 }}
           size="small"
           variant="contained"
-          onClick={async (e) => {
-            await handleSubmit(e);
-          }}
+          onClick={handleSubmit}
         >
           Submit
         </Button>

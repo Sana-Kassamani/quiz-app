@@ -3,9 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { score, fullScore, count, fullCount } = location.state || {};
+  const { quizScore, fullScore, count, fullCount } = location.state || {};
   const handleClick = () => {
-    navigate("/home");
+    navigate("/home", { state: {} });
   };
   return (
     <div className="flex column full-height justify-center align-center gap">
@@ -13,7 +13,7 @@ const ResultPage = () => {
         {count} out of {fullCount} Questions are correct.
       </h2>
       <h2>
-        Score: {score} / {fullScore}
+        Score: {quizScore} / {fullScore}
       </h2>
       <button onClick={handleClick}>Back to Home</button>
     </div>
